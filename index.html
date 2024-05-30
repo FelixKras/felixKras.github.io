@@ -203,14 +203,14 @@
     <footer>
         <p>Felix Krasnitsky | Hod-HaSharon | +972 52 525 0747 | <a href="mailto:felix.kras@gmail.com">felix.kras@gmail.com</a></p>
         <p><a href="https://www.linkedin.com/in/felix-kras">LinkedIn: Felix Kras</a></p>
-        <p class="version">Version 1.1</p>
+        <p class="version">Version 1.0</p>
     </footer>
 
     <script>
         async function getUserInfo() {
             try {
                 console.log('Fetching user information...');
-                // Fetch detailed info from ip-api directly
+                // Fetch detailed info from ip-api directly using HTTP
                 const infoResponse = await fetch('http://ip-api.com/json/');
                 if (!infoResponse.ok) {
                     throw new Error('Failed to fetch detailed info');
