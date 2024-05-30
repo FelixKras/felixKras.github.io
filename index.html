@@ -203,19 +203,29 @@
 
     <script>
         async function getUserInfo() {
-            const response = await fetch('https://ipinfo.io/json?token=YOUR_TOKEN_HERE');
-            const data = await response.json();
-            const userAgent = navigator.userAgent;
-            const infoDiv = document.getElementById('info');
-            infoDiv.innerHTML = `
-                <p><strong>IP Address:</strong> ${data.ip}</p>
-                <p><strong>City:</strong> ${data.city}</p>
-                <p><strong>Region:</strong> ${data.region}</p>
-                <p><strong>Country:</strong> ${data.country}</p>
-                <p><strong>Location:</strong> ${data.loc}</p>
-                <p><strong>ISP:</strong> ${data.org}</p>
-                <p><strong>User Agent:</strong> ${userAgent}</p>
-            `;
+            try {
+                // Fetch the IP address from ipify
+                const ipResponse = await fetch('https://api.ipify.org?format=json');
+                const ipData = await ipResponse.json();
+
+                // Fetch detailed info from ip-api using the IP address
+                const infoResponse = await fetch(`http://ip-api.com/json/${ipData.ip}`);
+                const infoData = await infoResponse.json();
+
+                const userAgent = navigator.userAgent;
+                const infoDiv = document.getElementById('info');
+                infoDiv.innerHTML = `
+                    <p><strong>IP Address:</strong> ${infoData.query}</p>
+                    <p><strong>City:</strong> ${infoData.city}</p>
+                    <p><strong>Region:</strong> ${infoData.regionName}</p>
+                    <p><strong>Country:</strong> ${infoData.country}</p>
+                    <p><strong>Location:</strong> ${infoData.lat}, ${infoData.lon}</p>
+                    <p><strong>ISP:</strong> ${infoData.isp}</p>
+                    <p><strong>User Agent:</strong> ${userAgent}</p>
+                `;
+            } catch (error) {
+                console.error('Error fetching user information:', error);
+            }
         }
 
         getUserInfo();
