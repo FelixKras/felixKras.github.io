@@ -123,8 +123,7 @@
                 <ul>
                     <li><a href="#about">About Me</a></li>
                     <li><a href="#experience">Experience</a></li>
-                    <li><a href="#education
-">Education</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -204,15 +203,15 @@
     <footer>
         <p>Felix Krasnitsky | Hod-HaSharon | +972 52 525 0747 | <a href="mailto:felix.kras@gmail.com">felix.kras@gmail.com</a></p>
         <p><a href="https://www.linkedin.com/in/felix-kras">LinkedIn: Felix Kras</a></p>
-        <p class="version">Version 1.3</p>
+        <p class="version">Version 1.4</p>
     </footer>
 
     <script>
         async function getUserInfo() {
             try {
                 console.log('Fetching user information...');
-                // Fetch detailed info from ipwhois.io directly using HTTPS
-                const infoResponse = await fetch('https://ipwhois.app/json/');
+                // Replace with your Vercel deployment URL
+                const infoResponse = await fetch('https://your-vercel-project-url.vercel.app/api/getUserInfo');
                 if (!infoResponse.ok) {
                     throw new Error('Failed to fetch detailed info');
                 }
