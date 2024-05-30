@@ -204,18 +204,9 @@
     <script>
         async function getUserInfo() {
             try {
-                console.log('Fetching IP address...');
-                // Fetch the IP address from ipify
-                const ipResponse = await fetch('https://api.ipify.org?format=json');
-                if (!ipResponse.ok) {
-                    throw new Error('Failed to fetch IP address');
-                }
-                const ipData = await ipResponse.json();
-                console.log('IP address fetched:', ipData);
-
-                console.log('Fetching detailed info...');
-                // Fetch detailed info from ip-api using the IP address
-                const infoResponse = await fetch(`http://ip-api.com/json/${ipData.ip}`);
+                console.log('Fetching user information...');
+                // Fetch detailed info from ip-api directly
+                const infoResponse = await fetch('http://ip-api.com/json/');
                 if (!infoResponse.ok) {
                     throw new Error('Failed to fetch detailed info');
                 }
